@@ -481,17 +481,6 @@ with tab3:
                     image_files = [f for f in filtered_files if any(f.lower().endswith(ext) for ext in image_extensions)]
                     
                     if image_files:
-                        total_files = len(file_list)
-                        filtered_count = len(filtered_files)
-                        st.success(f"Found {len(image_files)} images in the ZIP file")
-                        st.info(f"Processed {total_files} total files, filtered to {filtered_count} valid files, found {len(image_files)} images")
-                        
-                        # 显示图片列表预览
-                        with st.expander("Preview images in folder"):
-                            for i, img_file in enumerate(image_files[:10]):  # 只显示前10个
-                                st.write(f"{i+1}. {img_file}")
-                            if len(image_files) > 10:
-                                st.write(f"... and {len(image_files) - 10} more images")
                         
                         # 创建虚拟文件对象
                         class VirtualFile:
@@ -518,7 +507,6 @@ with tab3:
                 uploaded_files = []
     
     if uploaded_files:
-        st.info(f"**{len(uploaded_files)} images** selected for batch processing")
         
         # 处理选项
         col1, col2 = st.columns([1, 1])
