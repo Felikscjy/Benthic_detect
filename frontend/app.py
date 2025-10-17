@@ -114,29 +114,11 @@ Our models are trained on a curated benthic dataset containing thousands of labe
 | Model | Task | Metric | Accuracy | Average Confidence |
 |--------|-------|----------|-----------|--------------------|
 | **Vision Transformer (ViT)** | Species Classification | Top-1 Accuracy | **≈ 92%** | **99.9%** |
-| **YOLOv8** | Object Detection | mAP@0.5 | **≈ 85%** | **97–99%** |
+| **YOLOv8** | Object Detection | mAP@0.5 | **≈ 86%** | - |
 
-- **ViT (Classification):** Achieves ~92% accuracy with an average confidence of **99.9%**, indicating extremely strong model certainty across predictions.  
-- **YOLOv8 (Detection):** Delivers around 85% mean average precision (mAP) with **high confidence scores (97–99%)** for most detections, even under variable lighting and visibility.  
-- Both models maintain **high-confidence predictions** while generalizing well across benthic categories, ensuring stable performance on unseen underwater imagery.
-
-**2. Data Analysis**
-
-**DEEPSEA** includes a built-in **data analysis module** that summarizes key statistics from batch image processing runs. After uploading multiple images or ZIP datasets, the system automatically aggregates performance and biodiversity metrics for easy interpretation. For each processed batch, DEEPSEA provides:
-- **Species Distribution:** Counts and percentages of each detected species.  
-- **Detection Confidence:** Mean and standard deviation of YOLO and ViT confidence scores.  
-- **Spatial Metrics:** Average bounding box sizes, density of detections per image, and clustering across frames.  
-- **Accuracy Overview:** Average classification accuracy, precision, and recall for the uploaded dataset.  
-- **Processing Summary:** Total images analyzed, processing time, and throughput rate (images per second).
-
-**Example Output**
-| Metric | Example Value |
-|--------|----------------|
-| Images Processed | 250 |
-| Avg. Confidence (ViT) | 99.8% |
-| Avg. mAP (YOLOv8) | 85.3% |
-| Dominant Species | Crab (42%) |
-| Avg. Processing Time | 0.8s/image |
+- **ViT (Classification):** Achieves **~92%** accuracy with an average confidence of 99.9%, indicating extremely strong model certainty across predictions.  
+- **YOLOv8 (Detection):** Delivers around **86%** mean average precision (mAP) for test detections, even under variable lighting and visibility.  
+- Both models maintain high performace while generalizing well across benthic categories, ensuring stable performance on unseen underwater imagery.
 """)
 
 # ----------------------------
@@ -153,6 +135,16 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.markdown("""
+**2. Data Analysis**
+
+**DEEPSEA** includes a built-in **data analysis module** that summarizes key statistics from batch image processing runs. After uploading multiple images or ZIP datasets, the system automatically aggregates performance and biodiversity metrics for easy interpretation. For each processed batch, DEEPSEA provides:
+- **Individual Image Result:** ViT classification of species and YOLO framed species detection for each individual images uploaded.  
+- **Species Diversity:** Counts and percentages of detected species in a batch.  
+- **Detection Confidence:** ViT classification confidence scores.  
+- **Visualization:** Bar charts and pie charts summarizing species distribution across the dataset.
+- **Exporting Results:** Immediate export of the statistics in CSV files.""")
 
 # ----------------------------
 # Real-Time Monitoring Section
